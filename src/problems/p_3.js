@@ -1,6 +1,5 @@
 export const title = "Largest prime factor";
-export const code = `
-const fn = n => {
+export const code = `const fn = n => {
   let x = n;
   let i = 2;
   while (i < x) {

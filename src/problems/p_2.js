@@ -1,6 +1,5 @@
 export const title = "Even Fibonacci numbers";
-export const code = `
-  const fn = () => {
+export const code = `const fn = () => {
     let sum = 0;
     let a = 0;
     let b = 1;
