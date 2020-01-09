@@ -41,7 +41,7 @@ function App() {
         </div>
         <Collapse className="w-100" isOpen={isOpen === problem.title}>
           <SyntaxHighlighter language="javascript" style={okaidia}>
-            {problem.fn.toString()}
+            {`${problem.fn.toString()}`}
           </SyntaxHighlighter>
           <div className="d-flex align-items-center justify-content-between">
             <Button color="link" onClick={() => toggleProblem(problem.title)}>
