@@ -4,5 +4,7 @@ import * as p3 from "./p_3";
 import * as p4 from "./p_4";
 import * as p5 from "./p_5";
 import * as p6 from "./p_6";
+import * as p7 from "./p_7";
+import * as p8 from "./p_8";
 
-export const problems = [p1, p2, p3, p4, p5, p6];
+export const problems = [p1, p2, p3, p4, p5, p6, p7, p8];
