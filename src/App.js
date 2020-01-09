@@ -5,12 +5,34 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Footer } from "./components/Footer";
 import { Answer } from "./components/Answer";
+import { Pagination } from "./components/Pagination";
 
 function App() {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [currentProblems, setCurrentProblems] = useState(problems);
   const [isOpen, setIsOpen] = useState("");
   const [showAnswer, setShowAnswer] = useState("");
+  const setProblems = page => {
+    setCurrentProblems(problems.slice(page * 10 - 10, page * 10 + 1));
+  };
+  const handleBack = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1);
+      setProblems(currentPage - 1);
+    }
+  };
+  const handleFwd = () => {
+    if (currentPage < 10) {
+      setCurrentPage(currentPage + 1);
+      setProblems(currentPage + 1);
+    }
+  };
+  const handleGoToPage = page => {
+    setCurrentPage(page);
+    setProblems(page);
+  };
   const renderProblems = () =>
-    problems.map(problem => (
+    currentProblems.map(problem => (
       <li
         className="d-flex flex-column align-items-center list-group-item"
         key={problems.indexOf(problem)}
@@ -78,8 +100,15 @@ function App() {
       className="container d-flex flex-column align-items-center mt-5"
       style={{ maxWidth: "800px" }}
     >
-      <h1 className="display-4 mb-4 text-muted">Euler 100</h1>
+      <h1 className="display-4 mb-4 text-muted">{`Euler ${problems.length}`}</h1>
       <ul className="list-group w-100">{renderProblems()}</ul>
+      <Pagination
+        currentPage={currentPage}
+        handleBack={handleBack}
+        handleFwd={handleFwd}
+        handleGoToPage={handleGoToPage}
+        problemsLength={problems.length}
+      />
       <Footer />
     </div>
   );
