@@ -24,3 +24,9 @@ test("should return 104743", () => {
 test("should return 23514624000", () => {
   expect(problems[7].fn()).toEqual(23514624000);
 });
+test("should return 31875000", () => {
+  expect(problems[8].fn()).toEqual(31875000);
+});
+test("should return 142913828922", () => {
+  expect(problems[9].fn()).toEqual(142913828922);
+});
