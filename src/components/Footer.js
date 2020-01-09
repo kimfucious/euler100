@@ -9,7 +9,7 @@ export const Footer = () => {
         target="_blank"
         rel="noopener noreferrer"
       >
-        <img src={octocat} alt="Github logo" height="5%" width="5%" />
+        <img src={octocat} alt="Github logo" title="View Repo on Github" />
       </a>
     </div>
   );
