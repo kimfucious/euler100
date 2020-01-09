@@ -1,5 +1,4 @@
 import { problems } from "../index";
-console.log(problems[0].fn());
 
 test("should return 233168", () => {
   expect(problems[0].fn()).toEqual(233168);
@@ -18,4 +17,10 @@ test("should return 232792560", () => {
 });
 test("should return 25164150", () => {
   expect(problems[5].fn()).toEqual(25164150);
+});
+test("should return 104743", () => {
+  expect(problems[6].fn()).toEqual(104743);
+});
+test("should return 23514624000", () => {
+  expect(problems[7].fn()).toEqual(23514624000);
 });
