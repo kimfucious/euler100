@@ -15,5 +15,3 @@ export const fn = () => {
   }
   return sum;
 };
-
-export const code = fn.toString();

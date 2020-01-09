@@ -14,6 +14,3 @@ export const fn = (n = 100) => {
     throw error;
   }
 };
-
-export const code = fn.toString();
-console.log(fn());

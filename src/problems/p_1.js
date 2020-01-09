@@ -13,5 +13,3 @@ export const fn = () => {
     throw error;
   }
 };
-
-export const code = fn.toString();

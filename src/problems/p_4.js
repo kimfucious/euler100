@@ -29,5 +29,3 @@ export const fn = () => {
   }
   return max;
 };
-
-export const code = fn.toString();

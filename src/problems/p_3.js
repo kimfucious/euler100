@@ -13,5 +13,3 @@ export const fn = (n = 600851475143) => {
   }
   return x;
 };
-
-export const code = fn.toString();
