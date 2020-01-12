@@ -21,21 +21,23 @@ export const code = `(n = 10001) => {
   }
 }`;
 export const fn = (n = 10001) => {
-  let primeCounter = 2;
-  let x = 2;
-  let answer = null;
-  try {
-    while (primeCounter <= n) {
-      if (x > 2 && x % 2 !== 0) {
-        if (isPrime(x)) {
-          primeCounter++;
-          answer = x;
+  return new Promise((resolve, reject) => {
+    try {
+      let primeCounter = 2;
+      let x = 2;
+      let answer = null;
+      while (primeCounter <= n) {
+        if (x > 2 && x % 2 !== 0) {
+          if (isPrime(x)) {
+            primeCounter++;
+            answer = x;
+          }
         }
+        x++;
       }
-      x++;
+      resolve(answer);
+    } catch (error) {
+      reject(error);
     }
-    return answer;
-  } catch (error) {
-    throw error;
-  }
+  });
 };

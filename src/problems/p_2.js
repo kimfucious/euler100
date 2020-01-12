@@ -16,17 +16,23 @@ export const code = `() => {
   return sum;
 }`;
 export const fn = () => {
-  let sum = 0;
-  let a = 0;
-  let b = 1;
-  let fib = 0;
-  while (fib < 4000000) {
-    fib = a + b;
-    a = b;
-    b = fib;
-    if (fib % 2 === 0) {
-      sum += fib;
+  return new Promise((resolve, reject) => {
+    try {
+      let sum = 0;
+      let a = 0;
+      let b = 1;
+      let fib = 0;
+      while (fib < 4000000) {
+        fib = a + b;
+        a = b;
+        b = fib;
+        if (fib % 2 === 0) {
+          sum += fib;
+        }
+      }
+      resolve(sum);
+    } catch (error) {
+      reject(error);
     }
-  }
-  return sum;
+  });
 };
