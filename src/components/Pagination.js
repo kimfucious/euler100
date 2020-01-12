@@ -26,7 +26,7 @@ export const Pagination = ({
         </button>
       </li>
     ));
-  return pageRange.length > 10 ? (
+  return problemsLength > 10 ? (
     <div className="mt-3">
       <ul className="pagination pagination-sm">
         <li className={`page-item ${currentPage === 1 ? "disabled" : ""}`}>
@@ -35,7 +35,11 @@ export const Pagination = ({
           </button>
         </li>
         {pageRange ? renderPages() : null}
-        <li className={`page-item ${currentPage === 10 ? "disabled" : ""}`}>
+        <li
+          className={`page-item ${
+            currentPage === pageRange.length ? "disabled" : ""
+          }`}
+        >
           <button className="page-link" onClick={() => handleFwd()}>
             &raquo;
           </button>
