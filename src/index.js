@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import "./styles/bootstrap-slate.css";
+import "animate.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
 
