@@ -128,7 +128,7 @@ function App() {
                   {`${numeral(answer).format()}`}
                 </span>
                 <span
-                  className={`d-none d-block animated ${getRandomAnimation()}`}
+                  className={`d-none d-sm-block animated ${getRandomAnimation()}`}
                 >
                   {`${numeral(answer).format()} (${performance} ms)`}
                 </span>
