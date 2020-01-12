@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Button, Collapse } from "reactstrap";
+import { Button, Collapse, CustomInput } from "reactstrap";
 import { problems } from "./problems";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -14,7 +14,9 @@ function App() {
   const [currentProblem, setCurrentProblem] = useState("");
   const [currentProblems, setCurrentProblems] = useState(problems.slice(0, 10));
   const [isOpen, setIsOpen] = useState("");
+  const [performance, setPerformance] = useState("");
   const [showAnswer, setShowAnswer] = useState("");
+  const [showNaive, setShowNaive] = useState("");
 
   const setProblems = page => {
     setCurrentProblems(problems.slice(page * 10 - 10, page * 10));
@@ -45,36 +47,71 @@ function App() {
         key={problems.indexOf(problem)}
       >
         <div className="d-flex justify-content-between align-items-center w-100">
-          <div>
-            <span>{`# ${problems.indexOf(problem) + 1}:  `}</span>
-            <span className="ml-1">{problem.title}</span>
+          <div className="d-flex">
             <a
+              className="d-block d-sm-none"
               href={`https://projecteuler.net/problem=${problems.indexOf(
                 problem
               ) + 1}`}
               target="_blank"
               rel="noopener noreferrer"
             >
-              <i className="material-icons pl-2" style={{ fontSize: "16px" }}>
+              {`Problem #: ${problems.indexOf(problem) + 1}`}
+            </a>
+            <span className="d-none d-sm-block">{`# ${problems.indexOf(
+              problem
+            ) + 1}:  `}</span>
+            <span className="d-none d-sm-block ml-1">{problem.title}</span>
+            <a
+              className="d-none d-sm-block"
+              href={`https://projecteuler.net/problem=${problems.indexOf(
+                problem
+              ) + 1}`}
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i
+                className="material-icons pl-2 text-info"
+                style={{ fontSize: "16px" }}
+              >
                 open_in_new
               </i>
             </a>
           </div>
-          <Button
-            color="link"
-            onClick={() => toggleIsOpen(problem.title)}
-            size="sm"
-          >
-            {isOpen === problem.title ? "Hide" : "Show"}
-          </Button>
+          <div className="d-flex align-items-center">
+            {isOpen === problem.title && problem.naive ? (
+              <CustomInput
+                className="mr-3 text-info"
+                type="switch"
+                id="showNaive"
+                name="showNaive"
+                label="naive"
+                checked={showNaive === problem.title}
+                onChange={() => {
+                  toggleNaive(problem.title);
+                }}
+              />
+            ) : null}
+            <Button
+              color="primary"
+              className="text-info"
+              outline
+              onClick={() => toggleIsOpen(problem.title)}
+              size="sm"
+            >
+              {isOpen === problem.title ? "Hide" : "Show"}
+            </Button>
+          </div>
         </div>
         <Collapse className="w-100" isOpen={isOpen === problem.title}>
           <SyntaxHighlighter language="javascript" style={okaidia}>
-            {problem.code}
+            {showNaive === problem.title ? problem.naive : problem.code}
           </SyntaxHighlighter>
           <div className="d-flex align-items-center justify-content-between">
             <Button
-              color="link"
+              color="primary"
+              className="text-info mt-1"
+              outline
               size="sm"
               onClick={() => toggleProblem(problem)}
             >
@@ -84,9 +121,18 @@ function App() {
               <span className="animated fadeIn">{answer}</span>
             ) : null}
             {answer && answer !== "Wait for it..." ? (
-              <span className={`animated ${getRandomAnimation()}`}>
-                {numeral(answer).format()}
-              </span>
+              <>
+                <span
+                  className={`d-block d-sm-none animated ${getRandomAnimation()}`}
+                >
+                  {`${numeral(answer).format()}`}
+                </span>
+                <span
+                  className={`d-none d-blockanimated ${getRandomAnimation()}`}
+                >
+                  {`${numeral(answer).format()} (${performance} ms)`}
+                </span>
+              </>
             ) : null}
           </div>
         </Collapse>
@@ -100,6 +146,13 @@ function App() {
       setIsOpen("");
     } else {
       setIsOpen(title);
+    }
+  };
+  const toggleNaive = title => {
+    if (showNaive === title) {
+      setShowNaive("");
+    } else {
+      setShowNaive(title);
     }
   };
   const toggleProblem = problem => {
@@ -120,13 +173,16 @@ function App() {
   };
   useEffect(() => {
     const getAnswer = async fn => {
+      const t0 = window.performance.now();
       const data = await fn();
+      const t1 = window.performance.now();
       setAnswer(data);
+      setPerformance(t1 - t0);
     };
     if (currentProblem.fn && answer === "Wait for it...") {
       getAnswer(currentProblem.fn);
     }
-  }, [answer, currentProblem.fn]);
+  }, [answer, currentProblem.fn, performance]);
   return (
     <div
       className="container d-flex flex-column align-items-center mt-5"
