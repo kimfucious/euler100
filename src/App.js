@@ -15,22 +15,26 @@ function App() {
   const [currentProblems, setCurrentProblems] = useState(problems.slice(0, 10));
   const [isOpen, setIsOpen] = useState("");
   const [showAnswer, setShowAnswer] = useState("");
+
   const setProblems = page => {
     setCurrentProblems(problems.slice(page * 10 - 10, page * 10));
   };
   const handleBack = () => {
     if (currentPage > 1) {
+      setIsOpen("");
       setCurrentPage(currentPage - 1);
       setProblems(currentPage - 1);
     }
   };
   const handleFwd = () => {
     if (currentPage < 10) {
+      setIsOpen("");
       setCurrentPage(currentPage + 1);
       setProblems(currentPage + 1);
     }
   };
   const handleGoToPage = page => {
+    setIsOpen("");
     setCurrentPage(page);
     setProblems(page);
   };
