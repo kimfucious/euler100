@@ -3,7 +3,7 @@ import octocat from "../images/Octocat.png";
 
 export const Footer = () => {
   return (
-    <div className="text-center mt-3">
+    <div className="text-center my-3">
       <a
         href="https://github.com/kimfucious/euler100"
         target="_blank"
