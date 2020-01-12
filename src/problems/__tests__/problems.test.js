@@ -55,3 +55,8 @@ test("should return 70600674", async () => {
   const data = await problems[10].fn();
   expect(data).toEqual(70600674);
 });
+test("should return 76576500", async () => {
+  expect.assertions(1);
+  const data = await problems[11].fn();
+  expect(data).toEqual(76576500);
+});
