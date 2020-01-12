@@ -128,7 +128,7 @@ function App() {
                   {`${numeral(answer).format()}`}
                 </span>
                 <span
-                  className={`d-none d-blockanimated ${getRandomAnimation()}`}
+                  className={`d-none d-block animated ${getRandomAnimation()}`}
                 >
                   {`${numeral(answer).format()} (${performance} ms)`}
                 </span>
@@ -188,7 +188,7 @@ function App() {
       className="container d-flex flex-column align-items-center mt-5"
       style={{ maxWidth: "800px" }}
     >
-      <h1 className="display-4 mb-4 text-muted">{`Euler ${problems.length}`}</h1>
+      <h1 className="display-4 mb-3 text-muted">{`Euler ${problems.length}`}</h1>
       <Pagination
         currentPage={currentPage}
         handleBack={handleBack}
