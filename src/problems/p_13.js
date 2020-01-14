@@ -6,10 +6,12 @@ export const code = `(str = problem13String, digits = 50) => {
   let sum = 0;
   let start = 0;
   const loops = str.length / digits;
+
   for (let i = 0; i < loops; i++) {
     sum += parseInt(str.slice(start, start + digits));
     start += digits;
   }
+
   return parseInt(
     sum
       .toString()

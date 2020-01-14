@@ -12,8 +12,10 @@ export const naive = `(grid = problem11Grid()) => {
     for (let row of arr) {
       let start = 0;
       let end = 4;
+
       while (row.length >= end) {
         const product = row.slice(start, end).reduce((arr, curr) => arr * curr);
+
         if (product > max) {
           max = product;
         }
@@ -28,6 +30,7 @@ export const naive = `(grid = problem11Grid()) => {
     const vGrid = [];
     let row = 0;
     let col = 0;
+
     while (col < 20) {
       while (row < 20) {
         arr.push(grid[row][col]);
@@ -72,6 +75,7 @@ export const naive = `(grid = problem11Grid()) => {
       if (pass === len) {
         pass = 0;
         col = len - 1;
+        
         while (row < len) {
           while (col >= pass) {
             arr.push(grid[row][col]);
@@ -116,6 +120,7 @@ export const naive = `(grid = problem11Grid()) => {
       col = len - 1;
       pass++;
       row = pass;
+
       if (pass === len) {
         pass = 1;
         col--;

@@ -7,6 +7,7 @@ export const fnSmart = smart.fn;
 export const naive = `(f = 500) => {
   const has500Factors = (n, f) => {
       let factors = 0;
+
       for (let i = 1; i <= Math.floor(Math.sqrt(n)); i += 1) {
         if (n % i === 0) {
           factors += 1;
@@ -21,6 +22,7 @@ export const naive = `(f = 500) => {
 
     let nth = 1;
     let t = nth;
+
     while (true) {
       t = (nth * (nth + 1)) / 2;
       if (has500Factors(t, f)) {
