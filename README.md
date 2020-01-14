@@ -6,7 +6,7 @@ Truth be told, I'm naturally bad at coming up with "non-naive" solutions to thes
 
 I am especially terrible trying to work out problems involving matricies, they tend to make my head explode and make me feel really dumb sometimes 🤯
 
-Having said that, I'm constantly learning even, as I approach geezerdom.
+Having said that, I'm constantly learning.
 
 My initial attempts at solutions are almost always naive, relying on brute force at first. Then I try to see how things can be improved and/or optimized. I often come across solutions by others that do my head in. Never in a million years would I come up with some of these solutions on my own in the clever and brilliant ways that I've seen others have.
 
