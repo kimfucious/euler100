@@ -5595,7 +5595,7 @@ a.badge-dark:focus, a.badge-dark.focus {
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #1c1e22;
+  background-color: #1D1F21;
   border-radius: 0.3rem;
 }
 
@@ -5776,7 +5776,7 @@ a.badge-dark:focus, a.badge-dark.focus {
   height: 1rem;
   overflow: hidden;
   font-size: 0.703125rem;
-  background-color: #1c1e22;
+  background-color: #1D1F21;
   border-radius: 0.25rem;
 }
 
@@ -11035,7 +11035,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .table-hover .table-dark:hover, .table-hover .table-dark:hover > th, .table-hover .table-dark:hover > td {
-  background-color: #1c1e22;
+  background-color: #1D1F21;
 }
 
 .table-hover .table-success:hover, .table-hover .table-success:hover > th, .table-hover .table-success:hover > td {
@@ -11252,5 +11252,5 @@ legend {
 }
 
 .list-group-item:hover {
-  background-color: #1c1e22;
+  background-color: #1D1F21;
 }
