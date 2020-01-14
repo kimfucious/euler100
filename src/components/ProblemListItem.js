@@ -11,16 +11,13 @@ export const ProblemListItem = ({
   performance,
   problem,
   showAnswer,
-  showNaive,
+  showAlt,
   toggleIsOpen,
-  toggleNaive,
+  toggleAlt,
   toggleProblem
 }) => {
   return (
-    <li
-      className="d-flex flex-column align-items-center list-group-item"
-      key={problem.id}
-    >
+    <li className="d-flex flex-column align-items-center list-group-item">
       <div className="d-flex justify-content-between align-items-center w-100">
         <div className="d-flex">
           <a
@@ -48,16 +45,16 @@ export const ProblemListItem = ({
           </a>
         </div>
         <div className="d-flex align-items-center">
-          {isOpen === problem.title && problem.naive ? (
+          {isOpen === problem.title && problem.alt ? (
             <CustomInput
               className="mr-3 text-info"
               type="switch"
-              id="showNaive"
-              name="showNaive"
-              label="naive"
-              checked={showNaive === problem.title}
+              id="showAlt"
+              name="showAlt"
+              label="alt"
+              checked={showAlt === problem.title}
               onChange={() => {
-                toggleNaive(problem.title);
+                toggleAlt(problem.title);
               }}
             />
           ) : null}
@@ -74,7 +71,7 @@ export const ProblemListItem = ({
       </div>
       <Collapse className="w-100" isOpen={isOpen === problem.title}>
         <SyntaxHighlighter language="javascript" style={okaidia}>
-          {showNaive === problem.title ? problem.naive : problem.code}
+          {showAlt === problem.title ? problem.alt : problem.code}
         </SyntaxHighlighter>
         <div className="d-flex align-items-center justify-content-between">
           <Button

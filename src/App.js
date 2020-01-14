@@ -12,7 +12,7 @@ function App() {
   const [isOpen, setIsOpen] = useState("");
   const [performance, setPerformance] = useState("");
   const [showAnswer, setShowAnswer] = useState("");
-  const [showNaive, setShowNaive] = useState("");
+  const [showAlt, setShowAlt] = useState("");
 
   const handleBack = () => {
     if (currentPage > 1) {
@@ -39,15 +39,16 @@ function App() {
   const renderProblems = () =>
     currentProblems.map(problem => (
       <ProblemListItem
+        key={problem.id}
         {...{
           answer,
           isOpen,
           performance,
           problem,
           showAnswer,
-          showNaive,
+          showAlt,
           toggleIsOpen,
-          toggleNaive,
+          toggleAlt,
           toggleProblem
         }}
       />
@@ -61,25 +62,25 @@ function App() {
     setAnswer("");
     setCurrentProblem("");
     setShowAnswer("");
-    setShowNaive("");
+    setShowAlt("");
     if (isOpen === problem.title) {
       setIsOpen("");
     } else {
       setIsOpen(problem.title);
-      if (problem.naive) {
-        setShowNaive(problem.title);
+      if (problem.Alt) {
+        setShowAlt(problem.title);
       }
     }
   };
 
-  const toggleNaive = title => {
+  const toggleAlt = title => {
     setAnswer("");
     setCurrentProblem("");
     setShowAnswer("");
-    if (showNaive === title) {
-      setShowNaive("");
+    if (showAlt === title) {
+      setShowAlt("");
     } else {
-      setShowNaive(title);
+      setShowAlt(title);
     }
   };
 
@@ -108,12 +109,13 @@ function App() {
       setPerformance(t1 - t0);
     };
     if (currentProblem.fn && answer === "Wait for it...") {
-      if (currentProblem.fnSmart && !showNaive) {
-        getAnswer(currentProblem.fnSmart);
+      if (currentProblem.altFn && showAlt) {
+        getAnswer(currentProblem.altFn);
+      } else {
+        getAnswer(currentProblem.fn);
       }
-      getAnswer(currentProblem.fn);
     }
-  }, [answer, currentProblem.fn, currentProblem.fnSmart, showNaive]);
+  }, [answer, currentProblem.altFn, currentProblem.fn, showAlt]);
 
   return (
     <div
