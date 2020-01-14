@@ -8,6 +8,7 @@ import numeral from "numeral";
 export const ProblemListItem = ({
   answer,
   isOpen,
+  linkMode,
   performance,
   problem,
   showAnswer,
@@ -46,17 +47,34 @@ export const ProblemListItem = ({
         </div>
         <div className="d-flex align-items-center">
           {isOpen === problem.title && problem.alt ? (
-            <CustomInput
-              className="mr-3 text-info"
-              type="switch"
-              id="showAlt"
-              name="showAlt"
-              label="alt"
-              checked={showAlt === problem.title}
-              onChange={() => {
-                toggleAlt(problem.title);
-              }}
-            />
+            <div className="d-flex align-items-center">
+              <a
+                className={`${linkMode} align-items-center mr-2 animated ${
+                  showAlt ? "fadeIn" : "fadeOut"
+                }`}
+                href={problem.url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i
+                  className="material-icons text-info"
+                  style={{ fontSize: "18px" }}
+                >
+                  link
+                </i>
+              </a>
+              <CustomInput
+                className="mr-3 text-info"
+                type="switch"
+                id="showAlt"
+                name="showAlt"
+                label="alt"
+                checked={showAlt === problem.title}
+                onChange={() => {
+                  toggleAlt(problem.title);
+                }}
+              />
+            </div>
           ) : null}
           <Button
             color="primary"

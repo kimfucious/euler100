@@ -10,6 +10,7 @@ function App() {
   const [currentProblem, setCurrentProblem] = useState("");
   const [currentProblems, setCurrentProblems] = useState(problems.slice(0, 10));
   const [isOpen, setIsOpen] = useState("");
+  const [linkMode, setLinkMode] = useState("d-none");
   const [performance, setPerformance] = useState("");
   const [showAnswer, setShowAnswer] = useState("");
   const [showAlt, setShowAlt] = useState("");
@@ -43,6 +44,7 @@ function App() {
         {...{
           answer,
           isOpen,
+          linkMode,
           performance,
           problem,
           showAnswer,
@@ -63,6 +65,7 @@ function App() {
     setCurrentProblem("");
     setShowAnswer("");
     setShowAlt("");
+    setLinkMode("d-none");
     if (isOpen === problem.title) {
       setIsOpen("");
     } else {
@@ -81,6 +84,7 @@ function App() {
       setShowAlt("");
     } else {
       setShowAlt(title);
+      setLinkMode("d-flex");
     }
   };
 
