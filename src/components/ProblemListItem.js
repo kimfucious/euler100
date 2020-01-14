@@ -1,9 +1,12 @@
 import React from "react";
 import { Button, Collapse, CustomInput } from "reactstrap";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { okaidia } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { PrismAsyncLight as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import jsx from "react-syntax-highlighter/dist/esm/languages/prism/jsx";
 import { getRandomAnimation } from "../helpers";
 import numeral from "numeral";
+
+SyntaxHighlighter.registerLanguage("javascript", jsx);
 
 export const ProblemListItem = ({
   answer,
@@ -89,13 +92,15 @@ export const ProblemListItem = ({
         </div>
       </div>
       <Collapse className="w-100" isOpen={isOpen === problem.title}>
-        <SyntaxHighlighter
-          className={`animated ${codeAnimation}`}
-          language="javascript"
-          style={okaidia}
-        >
-          {showAlt === problem.title ? problem.alt : problem.code}
-        </SyntaxHighlighter>
+        <div style={{ borderRadius: "50px" }}>
+          <SyntaxHighlighter
+            className={`animated ${codeAnimation}`}
+            language="javascript"
+            style={atomDark}
+          >
+            {showAlt === problem.title ? problem.alt : problem.code}
+          </SyntaxHighlighter>
+        </div>
         <div className="d-flex align-items-center justify-content-between">
           <Button
             color="primary"
