@@ -3,9 +3,9 @@ import * as smart from "./smarties/p_11_smart";
 export const id = 11;
 export const title = "Largest product in a grid";
 export const url = smart.url;
-export const code = smart.code;
-export const fnSmart = smart.fn;
-export const naive = `(grid = problem11Grid()) => {
+export const alt = smart.code;
+export const altFn = smart.fn;
+export const code = `(grid = problem11Grid()) => {
   let max = 0;
 
   const getMax = arr => {

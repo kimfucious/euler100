@@ -1,10 +1,10 @@
 import * as smart from "./smarties/p_5_smart";
 export const id = 5;
 export const title = "Smallest multiple";
-export const code = smart.code;
+export const alt = smart.code;
 export const url = smart.url;
-export const smartFn = smart.fn;
-export const naive = `() => {
+export const altFn = smart.fn;
+export const code = `() => {
   const isGood = (val, n = 20) => {
     for (let i = 2; i < n + 1; i++) {
       if (val % i !== 0) {

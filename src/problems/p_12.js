@@ -2,9 +2,9 @@ import * as smart from "./smarties/p_12_smart";
 export const id = 12;
 export const title = "Highly divisible triangular number";
 export const url = smart.url;
-export const code = smart.code;
-export const fnSmart = smart.fn;
-export const naive = `(f = 500) => {
+export const alt = smart.code;
+export const altFn = smart.fn;
+export const code = `(f = 500) => {
   const has500Factors = (n, f) => {
       let factors = 0;
 
