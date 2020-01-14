@@ -6,6 +6,7 @@ import { ProblemListItem } from "./components/ProblemListItem";
 
 function App() {
   const [answer, setAnswer] = useState("");
+  const [codeAnimation, setcodeAnimation] = useState("fadeIn");
   const [currentPage, setCurrentPage] = useState(1);
   const [currentProblem, setCurrentProblem] = useState("");
   const [currentProblems, setCurrentProblems] = useState(problems.slice(0, 10));
@@ -43,6 +44,7 @@ function App() {
         key={problem.id}
         {...{
           answer,
+          codeAnimation,
           isOpen,
           linkMode,
           performance,
@@ -77,14 +79,21 @@ function App() {
   };
 
   const toggleAlt = title => {
+    setcodeAnimation("fadeOut faster");
     setAnswer("");
     setCurrentProblem("");
     setShowAnswer("");
     if (showAlt === title) {
-      setShowAlt("");
+      setTimeout(() => {
+        setShowAlt("");
+        setcodeAnimation("fadeIn faster");
+      }, 500);
     } else {
-      setShowAlt(title);
-      setLinkMode("d-flex");
+      setTimeout(() => {
+        setShowAlt(title);
+        setLinkMode("d-flex");
+        setcodeAnimation("fadeIn faster");
+      }, 500);
     }
   };
 
@@ -121,6 +130,12 @@ function App() {
     }
   }, [answer, currentProblem.altFn, currentProblem.fn, showAlt]);
 
+  // useEffect(() => {
+  //   setcodeAnimation("fadeOut");
+  //   setTimeout(() => {
+  //     setcodeAnimation("fadeIn");
+  //   }, 500);
+  // }, [showAlt]);
   return (
     <div
       className="container d-flex flex-column align-items-center mt-5"

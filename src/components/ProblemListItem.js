@@ -7,6 +7,7 @@ import numeral from "numeral";
 
 export const ProblemListItem = ({
   answer,
+  codeAnimation,
   isOpen,
   linkMode,
   performance,
@@ -88,7 +89,11 @@ export const ProblemListItem = ({
         </div>
       </div>
       <Collapse className="w-100" isOpen={isOpen === problem.title}>
-        <SyntaxHighlighter language="javascript" style={okaidia}>
+        <SyntaxHighlighter
+          className={`animated ${codeAnimation}`}
+          language="javascript"
+          style={okaidia}
+        >
           {showAlt === problem.title ? problem.alt : problem.code}
         </SyntaxHighlighter>
         <div className="d-flex align-items-center justify-content-between">
